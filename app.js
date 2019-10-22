@@ -21,41 +21,40 @@ app.get('/', function (req, res) {
   res.send('Welcome to the default page!  <br> <br>' +
     'Try going to different URIs by adding these at the end: <br> <br>' +
     '/hello <br>' +
-    '/big <br>' +
-    '/json <br>' +
-    '/greeting/yourname <br>' +
-    '/yo/Dr.Rogers <br>' +
-    '/fortune <br>' +
-    '/fancy/?first=Denise&last=Case <br>' +
-    '<br> <br>' +
-    'Fork the source code from <a href="https://github.com/denisecase/node-express-app">https://github.com/denisecase/node-express-app</a>'
+    '/inf <br>' +
+    
+    '/future <br>' +
+    '/fancy/?first=Satish&last=Mandapalli <br>' +
+    '/fortune/?question=Is it node js'+
+    '<br> <br>' 
+    
   )
 })
 
 // or use the new arrow function syntax
 // respond with text
 app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hi Iam Satish!')
 })
 
 // or respond with html
-app.get('/big', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
+app.get('/inf', (req, res) => {
+  res.send('<h1>Hi Iam Satishkumar Mandapalli .Present iam pursuing masters at Northwest Missouri State University!</h1>')
 })
 
-// or respond with JSON
-app.get('/json', (req, res) => {
-  res.send('{"name" : "Nandini"}')
-})
+// // or respond with JSON
+// app.get('/json', (req, res) => {
+//   res.send('{"name" : "Satish"}')
+// })
 
-// :name indicates a parameter at this location in the URI
-app.get('/greeting/:id', (req, res) => {
-  res.send(`Hello! The id provided was ${req.params.id}.`)
-})
+// // :name indicates a parameter at this location in the URI
+// app.get('/greeting/:id', (req, res) => {
+//   res.send(`Hello! The id provided was ${req.params.id}.`)
+// })
 
 // combine your skills and get creative
-app.get('/yo/:buddy', (req, res) => {
-  res.send(`<h1>Yo, ${req.params.buddy}!</h1>`)
+app.get('/future', (req, res) => {
+  res.send(`Iam planning to become back end developer at product based company.</h1>`)
 })
 
 // provide multiple query parameters (named first and last) with ? and &
@@ -78,7 +77,8 @@ app.get('/fortune', (req,res) => {
              '<p>Ask a question in the query string, e.g., http://localhost:3002/fortune?Will I become rich? <br/>' +
              '<p>The Magic 8 Ball will answer!</p>')
   } else {
-    res.send(`The answer is ... wait for it ... ${fortunes[randomInt(0, fortunes.length)]}`)
+    console.log(req.query.question)
+    res.send(`${req.query.question} ? :  The answer is ... wait for it ... ${fortunes[randomInt(0, fortunes.length)]}`)
   }
 })
 
@@ -93,13 +93,10 @@ app.listen(port, hostname, () => {
   console.log(`\n App listening at http://${hostname}:${port}/`)
   console.log(`\n Try going to different URIs:\n`)
   console.log(`   Try /hello`)
-  console.log(`   Try /big`)
-  console.log(`   Try /json`)
-  console.log(`   Try /fortune`)
-  console.log(`   Try /greeting/yourname`)
-  console.log(`   Try /yo/Dr.Rogers`)
-  console.log(`   Try /fancy/?first=Denise&last=Case`)
-  console.log('\n Hit CTRL-C CTRL-C to stop\n')
+  console.log(`   Try /inf`)
+  console.log(`   Try /future`)
+  console.log(`   Try /fancy`)
+ 
 })
 
 // Utility to see if an object is empty or not
